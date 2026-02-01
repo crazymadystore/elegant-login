@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Elegant Access</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Welcome Back</h1>
+            <p>Sign in to your account to continue</p>
+        </div>
+        
+        <form class="login-form" id="loginForm">
+            <div class="form-group">
+                <label for="email"></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" autocomplete="email" required>
+                </div>
+                <div class="validation-message" id="emailValidation"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password"></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" class="form-control" placeholder="Enter your password" autocomplete="current-password" required>
+                </div>
+            </div>
+            
+            <div class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <a class="forgot-password" id="forgotPasswordBtn">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn" disabled>Sign In</button>
+            
+           <div class="signup-link">
+    Don't have an account? <a href="signup.html" id="signupLin">Sign up now</a>
+</div>
+            
+            <div class="divider">
+                <span>Or sign in with</span>
+            </div>
+            
+            <div class="social-login">
+                <div class="social-btn google">
+                    <i class="fab fa-google"></i>
+                </div>
+                <div class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="social-btn twitter">
+                    <i class="fab fa-twitter"></i>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Custom Forgot Password Modal -->
+    <div class="modal-overlay" id="forgotPasswordModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Reset Your Password</h2>
+                <p>Enter your email address and we'll send you a link to reset your password</p>
+            </div>
+            
+            <div class="modal-body" id="modalForm">
+                <div class="modal-form-group">
+                    <label for="resetEmail">Email Address</label>
+                    <input type="email" id="resetEmail" class="modal-input" placeholder="Enter your email address">
+                    <div class="modal-validation" id="resetEmailValidation"></div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="modal-btn cancel" id="cancelResetBtn">Cancel</button>
+                <button class="modal-btn submit" id="submitResetBtn" disabled>Send Reset Link</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Message Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-body success-message">
+                <i class="fas fa-check-circle"></i>
+                <h3>Reset Email Sent!</h3>
+                <p id="successMessage">We've sent a password reset link to <strong id="sentEmail"></strong>. Please check your inbox and follow the instructions to reset your password.</p>
+                <p><small>If you don't see the email, please check your spam folder.</small></p>
+                <button class="modal-btn submit" id="closeSuccessBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
