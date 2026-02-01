@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Create Account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles specific to signup page */
+        .password-strength {
+            margin-top: 6px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .password-strength.weak {
+            color: #dc3545;
+        }
+        
+        .password-strength.moderate {
+            color: #ff9800;
+        }
+        
+        .password-strength.strong {
+            color: #28a745;
+        }
+        
+        .terms-agreement {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .terms-agreement a {
+            color: #6a11cb;
+            text-decoration: none;
+        }
+        
+        .terms-agreement a:hover {
+            text-decoration: underline;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+            font-size: 15px;
+        }
+        
+        .login-link a {
+            color: #6a11cb;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6a11cb;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .input-with-icon.double-icon {
+            position: relative;
+        }
+        
+        .input-with-icon.double-icon i:first-child {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6a11cb;
+            font-size: 18px;
+        }
+        
+        .input-with-icon.double-icon .form-control {
+            padding-left: 48px;
+            padding-right: 48px;
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background-color: #e1e5eb;
+            border-radius: 2px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .progress-fill.weak {
+            background-color: #dc3545;
+            width: 33%;
+        }
+        
+        .progress-fill.moderate {
+            background-color: #ff9800;
+            width: 66%;
+        }
+        
+        .progress-fill.strong {
+            background-color: #28a745;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Create Account</h1>
+            <p>Join our community and start your journey</p>
+        </div>
+        
+        <form class="login-form" id="signupForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" autocomplete="name" required>
+                </div>
+                <div class="validation-message" id="nameValidation"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" autocomplete="email" required>
+                </div>
+                <div class="validation-message" id="emailValidation"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-with-icon double-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" class="form-control" placeholder="Create a strong password" autocomplete="new-password" required>
+                    <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="passwordStrengthBar"></div>
+                </div>
+                <div class="password-strength" id="passwordStrengthText"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="input-with-icon double-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" autocomplete="new-password" required>
+                    <i class="fas fa-eye password-toggle" id="toggleConfirmPassword"></i>
+                </div>
+                <div class="validation-message" id="confirmPasswordValidation"></div>
+            </div>
+            
+            <div class="terms-agreement">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">
+                    I agree to the <a href="#" id="termsLink">Terms of Service</a> and <a href="#" id="privacyLink">Privacy Policy</a>
+                </label>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn" disabled>Create Account</button>
+            
+            <div class="login-link">
+                Already have an account? <a href="index.html">Sign in here</a>
+            </div>
+            
+            <div class="divider">
+                <span>Or sign up with</span>
+            </div>
+            
+            <div class="social-login">
+                <div class="social-btn google">
+                    <i class="fab fa-google"></i>
+                </div>
+                <div class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="social-btn twitter">
+                    <i class="fab fa-twitter"></i>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Terms & Conditions Modal -->
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Terms of Service</h2>
+                <p>Please read these terms carefully before using our service</p>
+            </div>
+            
+            <div class="modal-body">
+                <div style="max-height: 400px; overflow-y: auto; padding-right: 10px;">
+                    <h3>1. Acceptance of Terms</h3>
+                    <p>By accessing and using this service, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                    
+                    <h3>2. User Responsibilities</h3>
+                    <p>You are responsible for maintaining the confidentiality of your account and password and for restricting access to your computer.</p>
+                    
+                    <h3>3. Privacy Policy</h3>
+                    <p>Your registration data and certain other information about you are subject to our Privacy Policy.</p>
+                    
+                    <h3>4. Account Security</h3>
+                    <p>You are responsible for safeguarding the password that you use to access the service and for any activities or actions under your password.</p>
+                    
+                    <h3>5. Service Modifications</h3>
+                    <p>We reserve the right to modify or discontinue, temporarily or permanently, the service with or without notice at any time.</p>
+                    
+                    <h3>6. Termination</h3>
+                    <p>We may terminate or suspend access to our service immediately, without prior notice or liability, for any reason whatsoever.</p>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="modal-btn submit" id="closeTermsBtn">I Understand</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Privacy Policy Modal -->
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <p>How we collect, use, and protect your information</p>
+            </div>
+            
+            <div class="modal-body">
+                <div style="max-height: 400px; overflow-y: auto; padding-right: 10px;">
+                    <h3>1. Information We Collect</h3>
+                    <p>We collect information you provide directly to us, such as when you create an account, update your profile, or contact us for support.</p>
+                    
+                    <h3>2. How We Use Information</h3>
+                    <p>We use the information we collect to provide, maintain, and improve our services, to develop new services, and to protect our users.</p>
+                    
+                    <h3>3. Information Sharing</h3>
+                    <p>We do not share, sell, rent, or trade your personal information with third parties for their commercial purposes.</p>
+                    
+                    <h3>4. Data Security</h3>
+                    <p>We implement appropriate technical and organizational security measures designed to protect the security of your personal information.</p>
+                    
+                    <h3>5. Your Rights</h3>
+                    <p>You have the right to access, correct, update, or request deletion of your personal information at any time.</p>
+                    
+                    <h3>6. Changes to This Policy</h3>
+                    <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="modal-btn submit" id="closePrivacyBtn">I Understand</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-body success-message">
+                <i class="fas fa-check-circle"></i>
+                <h3>Account Created Successfully!</h3>
+                <p id="successMessage">Welcome <strong id="userName"></strong>! Your account has been created successfully. A verification email has been sent to <strong id="userEmail"></strong>.</p>
+                <p><small>Please check your email and verify your account to get started.</small></p>
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <button class="modal-btn submit" id="goToLoginBtn">Go to Login</button>
+                    <button class="modal-btn cancel" id="closeSuccessBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shared JavaScript -->
+    <script src="script.js"></script>
+    <!-- Signup-specific JavaScript -->
+    <script src="signup.js"></script>
+</body>
+</html>
